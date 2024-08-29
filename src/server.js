@@ -8,6 +8,48 @@ const serverPort = process.env.PORT || 3000
 const app = express()
 app.use(express.json())
 
+const emocoes = [
+    {
+        id: 1,
+        nome: "Raiva",
+        cor: "Vermelho"
+    },
+
+    {
+        id: 2,
+        nome: "Ansiedade",
+        cor: "Laranja"
+    },
+
+    {
+        id: 3,
+        nome: "Alegria",
+        cor: "Amarelo"
+    },
+
+]
+
+const personagens = [
+    {
+        id: 100,
+        nome: "Totoro",
+        studio: "Ghibli",
+        vivo: true
+    },
+    {
+        id: 101,
+        nome: "Thanos",
+        studio: "Marvel",
+        vivo: false
+    },
+    {
+        id: 102,
+        nome: "Pateta",
+        studio: "Disney",
+        vivo: true
+    },
+]
+
 app.get("/",(req, res) => {
     return res.status(200).send({ message: "Hello, World!"})
 })
@@ -15,6 +57,13 @@ app.get("/",(req, res) => {
 
 app.get("/2tds2",(req, res) => {
     return res.status(200).send({ message: "Hello, World!"})
+})
+
+app.get("/emocoes",(req, res) => {
+    return res.status(200).send( emocoes )
+})
+app.get("/personagens",(req, res) => {
+    return res.status(200).send( personagens )
 })
 
 app.listen(serverPort, () => {
